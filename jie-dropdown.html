@@ -1,0 +1,94 @@
+<!--
+  # dropdown
+
+  下拉菜单
+
+  # Example
+
+  ```
+  <jie-dropdown>
+    <jie-btn>Click Me!</jie-btn>
+    <jie-menu>
+      ...
+    </jie-menu>
+  </jie-dropdown>
+
+  <script>
+    var dropdown = document.querySelector('jie-dropdown');
+
+    dropdown.addEventListener('select', function (e) {
+      // e.detail.selected
+    });
+
+    dropdown.open();
+    dropdown.close();
+    dropdown.toggle();
+  </script>
+  ```
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../jie-btn/jie-btn.html">
+<link rel="import" href="../jie-menu/jie-menu.html">
+<link rel="import" href="../jie-mask/jie-mask.html">
+
+<polymer-element name="jie-dropdown" attributes="">
+
+  <template>
+    <style>
+      :host {
+        position: relative;
+      }
+      ::content jie-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 20;
+      }
+      jie-mask {
+        z-index: 10;
+        opacity: 0;
+      }
+    </style>
+    <content id="btn" select="jie-btn" on-click="{{toggle}}"></content>
+    <content id="menu" select="jie-menu" on-select="{{close}}"></content>
+    <jie-mask id="mask" on-click="{{close}}"></jie-mask>
+  </template>
+
+  <script>
+    Polymer('jie-dropdown', {
+
+      /**
+       * 开关菜单
+       */
+      toggle: function () {
+        var menu = this.querySelector('jie-menu');
+        menu && (menu.style.display ? this.close() : this.open());
+      },
+
+      /**
+       * 显示菜单
+       */
+      open: function () {
+        var btn = this.querySelector('jie-btn');
+        var menu = this.querySelector('jie-menu');
+        btn && btn.setAttribute('active', '');
+        menu && (menu.style.display = 'block');
+        this.$.mask.shown = true;
+      },
+
+      /**
+       * 隐藏菜单
+       */
+      close: function () {
+        var btn = this.querySelector('jie-btn');
+        var menu = this.querySelector('jie-menu');
+        btn && btn.removeAttribute('active');
+        menu && (menu.style.display = '');
+        this.$.mask.shown = false;
+      }
+    });
+  </script>
+
+</polymer-element>
