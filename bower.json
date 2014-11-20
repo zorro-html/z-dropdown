@@ -1,11 +1,11 @@
 {
   "name": "jie-dropdown",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "main": "jie-dropdown.html",
   "dependencies": {
     "polymer": "~0.5.0",
     "jie-mask": "Jinjiang/jie-mask#~0.0.1",
-    "jie-btn": "Jinjiang/jie-btn#~0.0.1",
+    "jie-btn": "Jinjiang/jie-btn#~0.0.2",
     "jie-menu": "Jinjiang/jie-menu#~0.0.1"
   }
 }

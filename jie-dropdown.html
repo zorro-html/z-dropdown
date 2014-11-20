@@ -38,8 +38,12 @@
     <style>
       :host {
         position: relative;
+        display: inline-block;
       }
-      ::content jie-btn::after {
+      ::content > jie-btn {
+        width: 100%;
+      }
+      ::content > jie-btn::after {
         display: inline-block;
         width: 0;
         height: 0;
@@ -50,7 +54,10 @@
         border-left: 4px solid transparent;
         content: "";
       }
-      ::content jie-menu {
+      ::content > jie-btn:empty::after {
+        margin-left: 0;
+      }
+      ::content > jie-menu {
         display: none;
         position: absolute;
         top: 100%;
