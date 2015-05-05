@@ -5,32 +5,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
 
-<title>Jie Dropdown</title>
+<title>Zorro Dropdown Element</title>
 
 <script src="../webcomponentsjs/webcomponents.js"></script>
-<link rel="import" href="jie-dropdown.html">
+<link rel="import" href="../docs-maker/z-doc.html">
+
+<link rel="import" href="z-dropdown.html">
 
 </head>
 <body>
 
-<jie-dropdown>
-  <jie-btn>Click Me!</jie-btn>
-  <jie-menu>
-    <li>ITEM 1</li>
-    <li>ITEM 2</li>
-    <li disabled>ITEM 3</li>
-    <hr>
-    <li>ITEM 4</li>
-  </jie-menu>
-</jie-dropdown>
-
-<script>
-  var dropdown = document.querySelector('jie-dropdown');
-
-  dropdown.addEventListener('select', function (e) {
-    console.log(e.detail.selected);
-  });
-</script>
+<z-doc name="z-dropdown"></z-doc>
 
 </body>
 </html>

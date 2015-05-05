@@ -1,19 +1,29 @@
-# dropdown
+# `<z-dropdown>`
 
-下拉菜单
+Dropdown element with a button and a menu
 
-# Example
+## Methods
+
+- `toggle()`
+- `open()`
+- `close()`
+
+## Examples
 
 ```
-<jie-dropdown>
-  <jie-btn>Click Me!</jie-btn>
-  <jie-menu>
-    ...
-  </jie-menu>
-</jie-dropdown>
+<z-dropdown id="z-dropdown-test">
+  <z-btn>Click Me!</z-btn>
+  <z-menu>
+    <li>ITEM 1</li>
+    <li>ITEM 2</li>
+    <li disabled>ITEM 3</li>
+    <hr>
+    <li>ITEM 4</li>
+  </z-menu>
+</z-dropdown>
 
 <script>
-  var dropdown = document.querySelector('jie-dropdown');
+  var dropdown = document.querySelector('html /deep/ #z-dropdown-test');
 
   dropdown.addEventListener('select', function (e) {
     // e.detail.selected
