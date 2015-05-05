@@ -1,0 +1,119 @@
+<!--
+
+@element z-dropdown
+
+# `<z-dropdown>`
+
+Dropdown element with a button and a menu
+
+## Methods
+
+- `toggle()`
+- `open()`
+- `close()`
+
+-->
+
+<!--
+
+@example default
+
+<z-dropdown id="z-dropdown-test">
+  <z-btn>Click Me!</z-btn>
+  <z-menu>
+    <li>ITEM 1</li>
+    <li>ITEM 2</li>
+    <li disabled>ITEM 3</li>
+    <hr>
+    <li>ITEM 4</li>
+  </z-menu>
+</z-dropdown>
+
+<script>
+  var dropdown = document.querySelector('html /deep/ #z-dropdown-test');
+
+  dropdown.addEventListener('select', function (e) {
+    // e.detail.selected
+  });
+
+  dropdown.open();
+  dropdown.close();
+  dropdown.toggle();
+</script>
+
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../z-btn/z-btn.html">
+<link rel="import" href="../z-menu/z-menu.html">
+<link rel="import" href="../z-mask/z-mask.html">
+
+<polymer-element name="z-dropdown" attributes="">
+
+  <template>
+    <style>
+      :host {
+        position: relative;
+        display: inline-block;
+      }
+      ::content > z-btn {
+        width: 100%;
+      }
+      ::content > z-btn::after {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: 2px;
+        vertical-align: middle;
+        border-top: 4px solid;
+        border-right: 4px solid transparent;
+        border-left: 4px solid transparent;
+        content: "";
+      }
+      ::content > z-btn:empty::after {
+        margin-left: 0;
+      }
+      ::content > z-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 20;
+      }
+      z-mask {
+        z-index: 10;
+        opacity: 0;
+      }
+    </style>
+    <content id="btn" select="z-btn" on-click="{{toggle}}"></content>
+    <content id="menu" select="z-menu" on-select="{{close}}"></content>
+    <z-mask id="mask" on-click="{{close}}"></z-mask>
+  </template>
+
+  <script>
+    Polymer('z-dropdown', {
+
+      toggle: function () {
+        var menu = this.querySelector('z-menu');
+        menu && (menu.style.display ? this.close() : this.open());
+      },
+
+      open: function () {
+        var btn = this.querySelector('z-btn');
+        var menu = this.querySelector('z-menu');
+        btn && btn.setAttribute('active', '');
+        menu && (menu.style.display = 'block');
+        this.$.mask.shown = true;
+      },
+
+      close: function () {
+        var btn = this.querySelector('z-btn');
+        var menu = this.querySelector('z-menu');
+        btn && btn.removeAttribute('active');
+        menu && (menu.style.display = '');
+        this.$.mask.shown = false;
+      }
+    });
+  </script>
+
+</polymer-element>

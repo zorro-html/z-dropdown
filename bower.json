@@ -1,11 +1,19 @@
 {
-  "name": "jie-dropdown",
-  "version": "0.0.3",
-  "main": "jie-dropdown.html",
+  "name": "z-dropdown",
+  "version": "1.0.0",
+  "main": "z-dropdown.html",
+  "ignore": [
+    "test"
+  ],
   "dependencies": {
     "polymer": "~0.5.0",
-    "jie-mask": "Jinjiang/jie-mask#~0.0.1",
-    "jie-btn": "Jinjiang/jie-btn#~0.0.2",
-    "jie-menu": "Jinjiang/jie-menu#~0.0.1"
+    "docs-parser": "Jinjiang/context-free-parser#master",
+    "z-mask": "zorro-html/z-mask",
+    "z-btn": "zorro-html/z-btn",
+    "z-menu": "zorro-html/z-menu"
+  },
+  "devDependencies": {
+    "docs-maker": "zorro-html/zorro-docs-maker",
+    "web-component-tester": "Polymer/web-component-tester#^1.4.2"
   }
 }
