@@ -91,22 +91,37 @@ Dropdown element with a button and a menu
 
       toggle: function () {
         var menu = this.querySelector('z-menu');
-        menu && (menu.style.display ? this.close() : this.open());
+        if (menu) {
+          if (menu.style.display) {
+            this.close();
+          }
+          else {
+            this.open();
+          }
+        }
       },
 
       open: function () {
         var btn = this.querySelector('z-btn');
         var menu = this.querySelector('z-menu');
-        btn && btn.setAttribute('active', '');
-        menu && (menu.style.display = 'block');
+        if (btn) {
+          btn.setAttribute('active', '');
+        }
+        if (menu) {
+          menu.style.display = 'block';
+        }
         this.$.mask.shown = true;
       },
 
       close: function () {
         var btn = this.querySelector('z-btn');
         var menu = this.querySelector('z-menu');
-        btn && btn.removeAttribute('active');
-        menu && (menu.style.display = '');
+        if (btn) {
+          btn.removeAttribute('active');
+        }
+        if (menu) {
+          menu.style.display = '';
+        }
         this.$.mask.shown = false;
       }
     });

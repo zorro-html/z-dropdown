@@ -28,9 +28,5 @@ Dropdown element with a button and a menu
   dropdown.addEventListener('select', function (e) {
     // e.detail.selected
   });
-
-  dropdown.open();
-  dropdown.close();
-  dropdown.toggle();
 </script>
 ```
