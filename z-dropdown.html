@@ -52,9 +52,11 @@ Dropdown element with a button and a menu
         position: relative;
         display: inline-block;
       }
+      polyfill-next-selector {content: ':host > z-btn';}
       ::content > z-btn {
         width: 100%;
       }
+      polyfill-next-selector {content: ':host > z-btn::after';}
       ::content > z-btn::after {
         display: inline-block;
         width: 0;
@@ -66,9 +68,11 @@ Dropdown element with a button and a menu
         border-left: 4px solid transparent;
         content: "";
       }
+      polyfill-next-selector {content: ':host > z-btn:empty::after';}
       ::content > z-btn:empty::after {
         margin-left: 0;
       }
+      polyfill-next-selector {content: ':host > z-menu';}
       ::content > z-menu {
         display: none;
         position: absolute;
